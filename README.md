@@ -14,7 +14,7 @@ The service is based on the Demux neural hybrid model. It is based on the U-Net 
 
 ## How does it work?
 
-The user must submit an audio file for demixing. The audio file must be 44100 Hz stereo. Using machine learning methods, this audio file is separated into sources. At the output, the service will give a json string, where the key will be the name of the source, and the value will be bytes for their subsequent conversion into an audio signal.
+The user must submit an audio file for demixing. The user can only submit audio in wav format! In this case, the frequency and number of channels do not matter. Using machine learning methods, this audio file is separated into sources. At the output, the service will give a json string, where the key will be the name of the source, and the value will be bytes for their subsequent conversion into an audio signal.
 
 ### Example:
 
