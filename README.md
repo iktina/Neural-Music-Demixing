@@ -10,6 +10,8 @@ The service allows you to demix (split) the input audio file into various source
 
 ## Model details:
 
+The service is based on the Demux neural hybrid model. It is based on the U-Net convolutional architecture. The input waveform is processed both through a temporal encoder, and first through the STFT followed by a spectral encoder. The two representations are summed when their dimensions align. The decoder is built symmetrically. The output spectrogram go through the ISTFT and is summed with the waveform outputs, giving the final model output. Best of all, the model can demix bass and vocals. In the future, it is planned to improve the quality of demixing of different sources.
+
 ## How does it work?
 
 The user must submit an audio file for demixing. The audio file must be 44100 Hz stereo. Using machine learning methods, this audio file is separated into sources. At the output, the service will give a json string, where the key will be the name of the source, and the value will be bytes for their subsequent conversion into an audio signal.
