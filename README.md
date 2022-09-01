@@ -28,3 +28,5 @@ If splitting into two sources was chosen, then an example output would be as fol
 Here, bytes are given for each source. Since the audio is two-channel, then transposition may be necessary. Be careful when converting bytes to an audio track. Check for correct sound. Requirements: 44100 Hz stereo.
 
 ## What to expect from this service?
+
+The client is expected to give the service 44100 Hz stereo sound, and the service will return the demixed audio files to the service, depending on the purpose of the demix. For all sources, the service should return 4 audio files with the following sources: drums, bass, vocals and others. For a source such as drums, the service should return 2 sounds: drums and everything else except drums.
