@@ -31,6 +31,16 @@ Here, bytes are given for each source. Since the audio is two-channel, then tran
 
 When tested locally, 3 demixes of 3 minutes of audio took about 30 seconds.
 
+### Algorithm for converting bytes to audio signal (for the front):
+
+1. Convert the string to a dictionary.
+2. We cut off unnecessary characters for each sequence of bytes, which is still a string. In python it is 2 characters at the beginning ("b) and 1 character at the end (").
+3. Encode into bytes again a string (now this string only with useful characters turns into bytes)
+4. Create an array of int16 format from bytes, change the shape to a 2D array (for stereo). To do this, we make two arrays from one array, taking into account the fact that the values are in order. Transposing the array.
+5. Save as an audio track with a frequency of 44100 Hz.
+
+This algorithm is implemented in the client code after receiving a response from the server.
+
 ## What to expect from this service?
 
 The client is expected to give the service 44100 Hz stereo sound, and the service will return the demixed audio files to the service, depending on the purpose of the demix. For all sources, the service should return 4 audio files with the following sources: drums, bass, vocals and others. For a source such as drums, the service should return 2 sounds: drums and everything else except drums.
