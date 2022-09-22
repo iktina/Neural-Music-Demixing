@@ -34,4 +34,4 @@ When tested locally, 3 demixes of 3 minutes of audio took about 30 seconds.
 
 ## What to expect from this service?
 
-The client is expected to give the service 44100 Hz stereo sound, and the service will return the demixed audio files to the service, depending on the purpose of the demix. For all sources, the service should return 4 audio files with the following sources: drums, bass, vocals and others. For a source such as drums, the service should return 2 sounds: drums and everything else except drums.
+The client is expected to give the service 44100 Hz stereo sound, and the service will return the demixed audio files to the service, depending on the purpose of the demix. (Changed: you need to submit any wav file) For all sources, the service should return 4 audio files with the following sources: drums, bass, vocals and others. For a source such as drums, the service should return 2 sounds: drums and everything else except drums.
