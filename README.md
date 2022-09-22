@@ -21,25 +21,16 @@ The user must submit an audio file for demixing. The user can only submit audio 
 Json format string. 
 If the client sent an audio file for splitting into 4 sources ("all"), the result will be the following:
 
-> {"drums": "b'4//X////9'", "bass": "b'4//X////9'", "other": "b'4//X////9'", "vocals": "b'4//X////9'"}
+> "{"drums": b'4//X////9', "bass": b'4//X////9', "other": b'4//X////9', "vocals": b'4//X////9'}"
 
 If splitting into two sources was chosen, then an example output would be as follows:
 
-> {"drums": "b'4//X////9'", "no_drums": "b'4//X////9'"}
+> "{"drums": b'4//X////9', "no_drums": b'4//X////9'}"
 
-Here, bytes are given for each source. Since the audio is two-channel, then transposition may be necessary. Be careful when converting bytes to an audio track. Check for correct sound. Requirements: 44100 Hz stereo.
+For each type of sound, the bytes of the wav audio file with all the embedded information are given. There is also a converter on the server side. You need to submit any wav audio.
 
 When tested locally, 3 demixes of 3 minutes of audio took about 30 seconds.
 
-### Algorithm for converting bytes to audio signal (for the front):
-
-1. Convert the string to a dictionary.
-2. We cut off unnecessary characters for each sequence of bytes, which is still a string. In python it is 2 characters at the beginning ("b) and 1 character at the end (").
-3. Encode into bytes again a string (now this string only with useful characters turns into bytes)
-4. Create an array of int16 format from bytes, change the shape to a 2D array (for stereo). To do this, we make two arrays from one array, taking into account the fact that the values are in order. Transposing the array.
-5. Save as an audio track with a frequency of 44100 Hz.
-
-This algorithm is implemented in the client code after receiving a response from the server.
 
 ## What to expect from this service?
 
