@@ -4,7 +4,7 @@ package demixing;
 
 // создаем структуру для запроса
 message Query {
-    string audio_file = 1;
+    bytes audio_file = 1;
     string sounds = 2;
 }
 
